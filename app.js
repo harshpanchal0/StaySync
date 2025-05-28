@@ -89,6 +89,10 @@ const userController = require("./controllers/users");
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 app
   .route("/listings")
   .get(wrapAsync(listingController.index))
