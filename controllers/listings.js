@@ -1,5 +1,9 @@
 const Listing = require("../models/listing");
 
+module.exports.root = (req, res) => {
+  res.redirect("/listings");
+};
+
 module.exports.index = async (req, res) => {
   const listings = await Listing.find();
   res.render("listings/index", { listings });
