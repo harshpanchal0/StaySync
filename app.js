@@ -2,10 +2,6 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.route("/").get((req, res) => {
-  res.redirect("/listings");
-});
-
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
@@ -92,6 +88,8 @@ const reviewController = require("./controllers/reviews");
 const userController = require("./controllers/users");
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
+
+app.get("/", listingController.root)
 
 app
   .route("/listings")
