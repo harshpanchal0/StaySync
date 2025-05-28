@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
@@ -12,6 +16,14 @@ const dbUrl = process.env.ATLASDB_URL;
 async function main() {
   await mongoose.connect(dbUrl);
 }
+
+main()
+  .then((res) => {
+    console.log("connected to DB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const multer = require("multer");
 const { storage } = require("./cloudConfig");
@@ -67,14 +79,6 @@ app.listen(port, () => {
   console.log(`${port} is listening`);
 });
 
-main()
-  .then((res) => {
-    console.log("connected to DB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 const ejs = require("ejs");
 const path = require("path");
 app.set("view engine", "ejs");
@@ -88,10 +92,6 @@ const reviewController = require("./controllers/reviews");
 const userController = require("./controllers/users");
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
-
-app.get("/", (req, res) => {
-  res.redirect("/listings");
-});
 
 app
   .route("/listings")
