@@ -2,10 +2,6 @@
 
 StaySync is a full-featured Airbnb-like web application built using **MongoDB**, **Express**, and **Node.js**. It allows users to explore and manage property listings for rentals.   
 
-🔗 **Live App:** https://staysync-k9nn.onrender.com/listings
-
----
-
 ## 📦 Tech Stack
 
 - **Backend:** Node.js, Express.js  
