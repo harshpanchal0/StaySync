@@ -32,6 +32,10 @@ module.exports.show = async (req, res) => {
 };
 
 module.exports.create = async (req, res, next) => {
+  if (!req.file) {
+  req.flash("error", "Please upload a listing image");
+  return res.redirect("/listings/new");
+  }
   let url = req.file.path;
   let filename = req.file.filename;
 

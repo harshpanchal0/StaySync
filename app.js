@@ -5,7 +5,7 @@ const port = 3000;
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
-
+   
 const mongoose = require("mongoose");
 const dbUrl = process.env.ATLASDB_URL;
 

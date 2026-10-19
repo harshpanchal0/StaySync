@@ -1,29 +1,30 @@
-//mongoose setup
+require("dotenv").config({ path: __dirname + "/../.env" }); 
 const mongoose = require("mongoose");
-const MONGO_URL = "mongodb://127.0.0.1:27017/staysync";
 const initData = require("./data");
 const Listing = require("../models/listing");
+const dbUrl = process.env.ATLASDB_URL;
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
 
-main()
-  .then((res) => {
-    console.log("connected to DB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-//data insert in database
 const initDB = async function () {
   await Listing.deleteMany({});
   initData.data = initData.data.map((obj) => ({
     ...obj,
-    owner: "681da7ea6a1e082fcd9f4797",
+    owner: "6ad5a4a0671a4a6e438aee84",
   }));
   await Listing.insertMany(initData.data);
   console.log("data inserted successfully");
+
+  mongoose.connection.close(); 
 };
-initDB();
+
+main()
+  .then(() => {
+    console.log("connected to DB");
+    initDB(); 
+  })
+  .catch((err) => {
+    console.log("Database connection failed:", err);
+  });
