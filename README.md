@@ -6,9 +6,9 @@ StaySync is a full-featured Airbnb-like web application built using **MongoDB**,
 
 - **Backend:** Node.js, Express.js  
 - **Database:** MongoDB (using Mongoose ODM)  
-- **Templating Engine:** EJS (or whichever engine you use)  
+- **Templating Engine:** EJS 
 - **Deployment:** Render  
-- **Other Tools:** dotenv, mongoose, body-parser, express-validator, etc.
+- **Other Tools:** dotenv, mongoose, body-parser, express-validator
 
 ---
 
@@ -18,5 +18,4 @@ StaySync is a full-featured Airbnb-like web application built using **MongoDB**,
 - 🔍 View all listings on homepage  
 - 🔐 User authentication  
 - 📁 Image upload  
-- 📝 Review system  
-- 📦 RESTful API architecture  
+- 📝 Review system
